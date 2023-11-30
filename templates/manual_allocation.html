@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Add necessary meta tags and title -->
+    <style>
+        /* Add your CSS styles here */
+        body {
+            background-color: #e6f7ff; /* Set background color to light blue */
+        }
+        .container {
+            display: flex;
+            flex-direction: row;
+        }
+        .menu {
+            width: 200px;
+            margin: 20px;
+            padding: 10px;
+            background-color: #cce6ff; /* Set menu background color to a slightly darker blue */
+            border: 2px solid #0056b3; /* Add border to the menu section */
+            border-radius: 8px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+        }
+        .menu a {
+            margin-bottom: 10px; /* Add margin between menu items */
+            text-decoration: none;
+            color: #0056b3; /* Set menu text color */
+            font-weight: bold;
+        }
+        .content {
+            margin: 30px;
+            padding: 10px;
+            background-color: #ffffff; /* Set content background color to white */
+            border-radius: 8px;
+            text-align: center;
+            width: 100%; /* Expand the content to fill the remaining space */
+        }
+        .allocation-section {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .claim-table {
+            width: 80%;
+            margin-top: 40px;
+            border-collapse: collapse;
+        }
+        .claim-table th, .claim-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        .claim-selection {
+            margin-top: 20px;
+        }
+        .allocate-button {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="menu">
+            <h1 style="color: #0056b3;"><b><i>Elico Healthcare</i></b></h1>
+            <a href="{{ url_for('dashboard') }}">Dashboard</a>
+            <a href="{{ url_for('upload_inventory') }}">Upload Inventory</a>
+            <a href="{{ url_for('configure_rules') }}">Configure Rules</a>
+            <a href="{{ url_for('reports') }}">Reports</a>
+            <a href="{{ url_for('manual_allocation') }}">Manual Allocation</a>
+        </div>
+        <div class="content">
+            <h1>Manual Allocation</h1>
+            <!-- Content specific to the Manual Allocation page goes here -->
+            <div class="allocation-section">
+                <form action="{{ url_for('manual_allocation') }}" method="post">
+                    <label for="user-dropdown">Select User:</label>
+                    <select id="user-dropdown" name="user" required>
+                        <option value="user1">User 1</option>
+                        <option value="user2">User 2</option>
+                        <!-- Add more options as needed -->
+                    </select>
+                    
+                    <!-- Table to show claims -->
+                    <table class="claim-table">
+                        <thead>
+                            <tr>
+                                <th>Select</th>
+                                <th>Claim ID</th>
+                                <th>Insurance</th>
+                                <th>Date of Service</th>
+                                <th>Balance</th>
+                                <!-- Add more table headers as needed -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Example claims data -->
+                            <tr>
+                                <td><input type="checkbox" class="claim-checkbox" name="claims[]" value="claim1"></td>
+                                <td>Claim 1</td>
+                                <td>Medicare</td>
+                                <td>10/2/2023</td>
+                                <td>$500</td>
+                                <!-- Add more table data as needed -->
+                            </tr>
+                            <tr>
+                                <td><input type="checkbox" class="claim-checkbox" name="claims[]" value="claim2"></td>
+                                <td>Claim 2</td>
+                                <td>UHC</td>
+                                <td>9/25/2023</td>
+                                <td>$500</td>
+                                <!-- Add more table data as needed -->
+                            </tr>
+                            <!-- Add more rows as needed -->
+                        </tbody>
+                    </table>
+                    
+                    <div class="claim-selection">
+                        
+                            <!-- Add options dynamically based on selected claims -->
+                        </select>
+                    </div>
+                    
+                    <div class="allocate-button">
+                        <button type="submit">Allocate</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

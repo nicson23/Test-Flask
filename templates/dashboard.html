@@ -1,0 +1,64 @@
+<!-- Add the necessary meta tags and title -->
+<style>
+    /* Add your CSS styles here */
+    body {
+        background-color: #e6f7ff; /* Set background color to light blue */
+    }
+    .container {
+        display: flex;
+        flex-direction: row;
+    }
+    .menu {
+        width: 200px;
+        margin: 20px;
+        padding: 10px;
+        background-color: #cce6ff; /* Set menu background color to a slightly darker blue */
+        border: 2px solid #0056b3; /* Add border to the menu section */
+        border-radius: 8px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        outline: 2px solid #0056b3; /* Add outline to the menu section */
+    }
+    .menu a {
+        margin-bottom: 10px; /* Add margin between menu items */
+        text-decoration: none;
+        color: #0056b3; /* Set menu text color */
+        font-weight: bold;
+    }
+    .content {
+        margin: 20px;
+        padding: 10px;
+        background-color: #ffffff; /* Set content background color to white */
+        border-radius: 8px;
+        text-align: center;
+        width: 100%; /* Expand the content to fill the remaining space */
+    }
+    .dashboard-charts {
+        /* Add styles for the dashboard charts */
+    }
+</style>
+
+<!-- Add your HTML content for the Dashboard page here -->
+
+</head>
+<body>
+    <div class="container">
+        <div class="menu">
+            <h1><b><i>Elico Healthcare</i></b></h1>
+            <a href="{{ url_for('dashboard') }}">Dashboard</a>
+            <a href="{{ url_for('upload_inventory') }}">Upload Inventory</a>
+            <a href="{{ url_for('configure_rules') }}">Configure Rules</a>
+            <a href="{{ url_for('reports') }}">Reports</a>
+            <a href="{{ url_for('manual_allocation') }}">Manual Allocation</a>
+        </div>
+        <div class="content">
+            <h1>Elico Healthcare - AR AI Tool</h1>
+            <!-- Content specific to the Dashboard page goes here -->
+            <!-- Dashboard charts go here -->
+            <p>Inventory: {{ inventory_vs_completed['inventory'] }}</p>
+            <p>Completed: {{ inventory_vs_completed['completed'] }}</p>
+        </div>
+    </div>
+</body>
+</html>
